@@ -181,8 +181,7 @@ public class UserDb extends Db {
 		try (Connection connection = getConnection()) {
 			try (PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM " + this.table + " WHERE id=?;")) {
 				preparedStatement.setString(1, id);
-				boolean result = preparedStatement.executeUpdate() != 0;
-				return result;
+				return preparedStatement.executeUpdate() != 0;
 			}
 		} catch (Exception e) {
 			System.out.println(e);

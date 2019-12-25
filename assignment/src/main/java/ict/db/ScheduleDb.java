@@ -135,6 +135,21 @@ public class ScheduleDb extends Db {
 		Time to,
 		String roomId
 	) {
+		try (Connection connection = getConnection()) {
+			try (PreparedStatement preparedStatement = connection.prepareStatement("UPDATE schedule SET course_id=?, date=?, from=?, to=?, room_id=? WHERE id=?;")) {
+				preparedStatement.setString(1, courseId);
+				preparedStatement.setDate(2, date);
+				preparedStatement.setTime(3, from);
+				preparedStatement.setTime(4, to);
+				preparedStatement.setString(5, roomId);
+				preparedStatement.setString(6, id);
+				preparedStatement.executeUpdate();
+				return this.get(id);
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
 		return null;
 	}
 

@@ -133,6 +133,21 @@ public class CourseDb extends Db {
 		boolean hidden,
 		String teacherId
 	) {
+		try (Connection connection = getConnection()) {
+			try (PreparedStatement preparedStatement = connection.prepareStatement("UPDATE course SET shortname=?, fullname=?, summary=?, hidden=?, teacher_id=? WHERE id=?;")) {
+				preparedStatement.setString(1, shortname);
+				preparedStatement.setString(2, fullname);
+				preparedStatement.setString(3, summary);
+				preparedStatement.setBoolean(4, hidden);
+				preparedStatement.setString(5, teacherId);
+				preparedStatement.setString(6, id);
+				preparedStatement.executeUpdate();
+				return this.get(id);
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
 		return null;
 	}
 

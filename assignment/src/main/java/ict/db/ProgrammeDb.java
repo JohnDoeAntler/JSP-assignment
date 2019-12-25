@@ -127,6 +127,20 @@ public class ProgrammeDb extends Db {
 		String summary,
 		boolean hidden
 	) {
+		try (Connection connection = getConnection()) {
+			try (PreparedStatement preparedStatement = connection.prepareStatement("UPDATE programme SET shortname=?, fullname=?, summary=?, hidden=? WHERE id=?;")) {
+				preparedStatement.setString(1, shortname);
+				preparedStatement.setString(2, fullname);
+				preparedStatement.setString(3, summary);
+				preparedStatement.setBoolean(4, hidden);
+				preparedStatement.setString(5, id);
+				preparedStatement.executeUpdate();
+				return this.get(id);
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
 		return null;
 	}
 

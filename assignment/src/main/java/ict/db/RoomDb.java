@@ -107,6 +107,17 @@ public class RoomDb extends Db {
 		String id,
 		String name
 	) {
+		try (Connection connection = getConnection()) {
+			try (PreparedStatement preparedStatement = connection.prepareStatement("UPDATE room SET name=? WHERE id=?;")) {
+				preparedStatement.setString(1, name);
+				preparedStatement.setString(2, id);
+				preparedStatement.executeUpdate();
+				return this.get(id);
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
 		return null;
 	}
 

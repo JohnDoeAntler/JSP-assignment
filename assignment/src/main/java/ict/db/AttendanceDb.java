@@ -114,6 +114,17 @@ public class AttendanceDb extends Db {
 		String id,
 		Time time
 	) {
+		try (Connection connection = getConnection()) {
+			try (PreparedStatement preparedStatement = connection.prepareStatement("UPDATE attendance SET time=? WHERE id=?;")) {
+				preparedStatement.setTime(1, time);
+				preparedStatement.setString(2, id);
+				preparedStatement.executeUpdate();
+				return this.get(id);
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
 		return null;
 	}
 
