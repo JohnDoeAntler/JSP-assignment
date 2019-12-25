@@ -104,6 +104,14 @@ public class EnrichmentDb extends Db {
 	}
 
 	public boolean remove(String id) {
+		try (Connection connection = getConnection()) {
+			try (PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM enrichment WHERE id=?;")) {
+				preparedStatement.setString(1, id);
+				return preparedStatement.executeUpdate() != 0;
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 		return false;
 	}
 

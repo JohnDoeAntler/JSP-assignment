@@ -110,7 +110,16 @@ public class StudentEnrichmentDb extends Db {
 		return null;
 	}
 
-	public boolean remove (String id) {
+	public boolean remove(String id) {
+		try (Connection connection = getConnection()) {
+			try (PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM studentenrichment WHERE id=?;")) {
+				preparedStatement.setString(1, id);
+				return preparedStatement.executeUpdate() != 0;
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 		return false;
 	}
+
 }
