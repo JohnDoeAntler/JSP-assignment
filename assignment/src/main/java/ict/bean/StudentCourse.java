@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
- * Enrichment
+ * StudentCourse
  */
-public class Enrichment implements Serializable {
+public class StudentCourse implements Serializable {
 
 	/**
 	 *
@@ -15,27 +15,31 @@ public class Enrichment implements Serializable {
 
 	private String id;
 
+	private String studentId;
+
 	private String courseId;
 
 	private Timestamp createdAt;
 
 	private Timestamp updatedAt;
 
-	public Enrichment(
+	public StudentCourse() {
+		super();
+	}
+
+	public StudentCourse(
 		String id,
+		String studentId,
 		String courseId,
 		Timestamp createdAt,
 		Timestamp updatedAt
 	) {
 		super();
 		this.id = id;
+		this.studentId = studentId;
 		this.courseId = courseId;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
-	}
-
-	public Enrichment() {
-		super();
 	}
 
 	public String getId() {
@@ -44,6 +48,14 @@ public class Enrichment implements Serializable {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getStudentId() {
+		return this.studentId;
+	}
+
+	public void setStudentId(String studentId) {
+		this.studentId = studentId;
 	}
 
 	public String getCourseId() {
