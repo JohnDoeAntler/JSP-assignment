@@ -34,7 +34,6 @@ public class UserDb extends Db {
 	//
 	// ─── ENCRYPT ────────────────────────────────────────────────────────────────────
 	//
-
 	private String encrypt(String password) {
 		return new StrongPasswordEncryptor().encryptPassword(password);
 	}
@@ -156,15 +155,30 @@ public class UserDb extends Db {
 	public User update(
 		String id,
 		String username,
-		String password,
 		boolean suspended
 	) {
 		try (Connection connection = getConnection()) {
-			try (PreparedStatement preparedStatement = connection.prepareStatement("UPDATE " + this.table + " SET username=?, password_digest=?, suspended=? WHERE id=?;")) {
+			try (PreparedStatement preparedStatement = connection.prepareStatement("UPDATE " + this.table + " SET username=?, suspended=? WHERE id=?;")) {
 				preparedStatement.setString(1, username);
-				preparedStatement.setString(2, encrypt(password));
-				preparedStatement.setBoolean(3, suspended);
-				preparedStatement.setString(4, id);
+				preparedStatement.setBoolean(2, suspended);
+				preparedStatement.setString(3, id);
+				preparedStatement.executeUpdate();
+				return this.get(id);
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return null;
+	}
+
+	public User updatePassword(
+		String id,
+		String password
+	) {
+		try (Connection connection = getConnection()) {
+			try (PreparedStatement preparedStatement = connection.prepareStatement("UPDATE " + this.table + " SET password_digest=? WHERE id=?;")) {
+				preparedStatement.setString(1, encrypt(password));
+				preparedStatement.setString(2, id);
 				preparedStatement.executeUpdate();
 				return this.get(id);
 			}
