@@ -1,0 +1,45 @@
+@import './animate.css';
+@import './dot.css';
+@import './typo.css';
+@import './button.css';
+@import './hr.css';
+
+body {
+	overflow-x: hidden;
+}
+
+.navigate-card {
+	width: 100%;
+}
+
+.navigate-card:hover {
+	width: calc(100% + 20px);
+}
+
+#navigation-bar {
+	position: fixed;
+}
+
+@media screen and (max-width: 767px){
+	#navigation-bar {
+		position: relative;
+	}
+}
+
+a.hyperlink{
+	border-bottom: 8px solid transparent;
+}
+
+a.hyperlink:hover {
+	border-bottom: 4px solid #00cccc;
+}
+
+.navigate-item {
+	background-color: #101010;
+	border-left: .5rem solid #00cccc;
+	cursor: pointer;
+}
+
+.navigate-item:hover>.title-regular{
+	font-size: 2rem;
+}

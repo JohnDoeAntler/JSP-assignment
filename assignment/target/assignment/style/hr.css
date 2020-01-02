@@ -1,0 +1,134 @@
+hr.vector-left {
+	border-bottom: 1px solid white !important;
+	border-radius: 1px;
+}
+
+hr.vector-left::before {
+	position: relative;
+	float: left;
+	content: "";
+	width: 0;
+	height: 0;
+	transform: translate(-200%, -50%);
+
+	border-top: 5px solid transparent;
+	border-bottom: 5px solid transparent;
+	border-left: 8px solid white;
+}
+
+hr.vector-right {
+	border-bottom: 1px solid white !important;
+	border-radius: 1px;
+}
+
+hr.vector-right::after {
+	position: relative;
+	float: right;
+	content: "";
+	width: 0;
+	height: 0;
+	transform: translate(200%, -50%);
+
+	border-top: 5px solid transparent;
+	border-bottom: 5px solid transparent;
+	border-right: 8px solid white;
+}
+
+hr.vector {
+
+	border-bottom: 1px solid white !important;
+	border-radius: 1px;
+}
+
+hr.vector::before {
+	position: relative;
+	float: left;
+	content: "";
+	width: 0;
+	height: 0;
+	transform: translate(-200%, -50%);
+
+	border-top: 5px solid transparent;
+	border-bottom: 5px solid transparent;
+	border-left: 8px solid white;
+}
+
+hr.vector::after {
+	position: relative;
+	float: right;
+	content: "";
+	width: 0;
+	height: 0;
+	transform: translate(200%, -50%);
+
+	border-top: 5px solid transparent;
+	border-bottom: 5px solid transparent;
+	border-right: 8px solid white;
+}
+
+hr.vector-left-black {
+	border-bottom: 1px solid #303030 !important;
+	border-radius: 1px;
+}
+
+hr.vector-left-black::before {
+	position: relative;
+	float: left;
+	content: "";
+	width: 0;
+	height: 0;
+	transform: translate(-200%, -50%);
+
+	border-top: 5px solid transparent;
+	border-bottom: 5px solid transparent;
+	border-left: 8px solid #303030;
+}
+
+hr.vector-right-black {
+	border-bottom: 1px solid #303030 !important;
+	border-radius: 1px;
+}
+
+hr.vector-right-black::after {
+	position: relative;
+	float: right;
+	content: "";
+	width: 0;
+	height: 0;
+	transform: translate(200%, -50%);
+
+	border-top: 5px solid transparent;
+	border-bottom: 5px solid transparent;
+	border-right: 8px solid #303030;
+}
+
+hr.vector-black {
+	border-bottom: 1px solid #303030 !important;
+	border-radius: 1px;
+}
+
+hr.vector-black::before {
+	position: relative;
+	float: left;
+	content: "";
+	width: 0;
+	height: 0;
+	transform: translate(-200%, -50%);
+
+	border-top: 5px solid transparent;
+	border-bottom: 5px solid transparent;
+	border-left: 8px solid #303030;
+}
+
+hr.vector-black::after {
+	position: relative;
+	float: right;
+	content: "";
+	width: 0;
+	height: 0;
+	transform: translate(200%, -50%);
+
+	border-top: 5px solid transparent;
+	border-bottom: 5px solid transparent;
+	border-right: 8px solid #303030;
+}

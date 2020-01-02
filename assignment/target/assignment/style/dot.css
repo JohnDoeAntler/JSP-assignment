@@ -1,0 +1,7 @@
+.dot {
+	background-attachment: fixed;
+	background-image: radial-gradient(rgba(0, 0, 0, .25) 4%, transparent 4%), radial-gradient(rgba(0, 0, 0, .25) 4%, transparent 4%);
+	background-color: transparent;
+	background-position: 0 0, 20px 20px;
+	background-size: 40px 40px;
+}

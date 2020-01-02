@@ -1,0 +1,78 @@
+button:not(.close) {
+	padding: 1.2rem;
+	border: none;
+	text-decoration: none;
+	background-color: #101010 !important;
+
+	color: white;
+	font-family: "Jaapokki-regular";
+	text-transform: uppercase;
+
+	border-bottom: .5rem solid #00cccc;
+
+	margin-right: .5rem;
+}
+
+button:not(.close)::after {
+	content: '';
+	display: inline-block;
+	-webkit-transition: all 1000ms cubic-bezier(0.000, 1.000, 0.000, 1.000);
+	-moz-transition: all 1000ms cubic-bezier(0.000, 1.000, 0.000, 1.000);
+	-o-transition: all 1000ms cubic-bezier(0.000, 1.000, 0.000, 1.000);
+	transition: all 1000ms cubic-bezier(0.000, 1.000, 0.000, 1.000);
+	/* custom */
+
+	-webkit-transition-timing-function: cubic-bezier(0.000, 1.000, 0.000, 1.000);
+	-moz-transition-timing-function: cubic-bezier(0.000, 1.000, 0.000, 1.000);
+	-o-transition-timing-function: cubic-bezier(0.000, 1.000, 0.000, 1.000);
+	transition-timing-function: cubic-bezier(0.000, 1.000, 0.000, 1.000);
+	/* custom */
+}
+
+button:not(.close):hover::after {
+	content: ' - HOVER';
+	margin-left: .25rem;
+	-webkit-transition: all 1000ms cubic-bezier(0.000, 1.000, 0.000, 1.000);
+	-moz-transition: all 1000ms cubic-bezier(0.000, 1.000, 0.000, 1.000);
+	-o-transition: all 1000ms cubic-bezier(0.000, 1.000, 0.000, 1.000);
+	transition: all 1000ms cubic-bezier(0.000, 1.000, 0.000, 1.000);
+	/* custom */
+
+	-webkit-transition-timing-function: cubic-bezier(0.000, 1.000, 0.000, 1.000);
+	-moz-transition-timing-function: cubic-bezier(0.000, 1.000, 0.000, 1.000);
+	-o-transition-timing-function: cubic-bezier(0.000, 1.000, 0.000, 1.000);
+	transition-timing-function: cubic-bezier(0.000, 1.000, 0.000, 1.000);
+	/* custom */
+}
+
+button:not(.close):focus::after {
+	content: ' - FOCUS';
+	margin-left: .25rem;
+	-webkit-transition: all 1000ms cubic-bezier(0.000, 1.000, 0.000, 1.000);
+	-moz-transition: all 1000ms cubic-bezier(0.000, 1.000, 0.000, 1.000);
+	-o-transition: all 1000ms cubic-bezier(0.000, 1.000, 0.000, 1.000);
+	transition: all 1000ms cubic-bezier(0.000, 1.000, 0.000, 1.000);
+	/* custom */
+
+	-webkit-transition-timing-function: cubic-bezier(0.000, 1.000, 0.000, 1.000);
+	-moz-transition-timing-function: cubic-bezier(0.000, 1.000, 0.000, 1.000);
+	-o-transition-timing-function: cubic-bezier(0.000, 1.000, 0.000, 1.000);
+	transition-timing-function: cubic-bezier(0.000, 1.000, 0.000, 1.000);
+	/* custom */
+}
+
+button:not(.close):active::after {
+	content: ' - ACTIVE';
+	margin-left: .25rem;
+	-webkit-transition: all 1000ms cubic-bezier(0.000, 1.000, 0.000, 1.000);
+	-moz-transition: all 1000ms cubic-bezier(0.000, 1.000, 0.000, 1.000);
+	-o-transition: all 1000ms cubic-bezier(0.000, 1.000, 0.000, 1.000);
+	transition: all 1000ms cubic-bezier(0.000, 1.000, 0.000, 1.000);
+	/* custom */
+
+	-webkit-transition-timing-function: cubic-bezier(0.000, 1.000, 0.000, 1.000);
+	-moz-transition-timing-function: cubic-bezier(0.000, 1.000, 0.000, 1.000);
+	-o-transition-timing-function: cubic-bezier(0.000, 1.000, 0.000, 1.000);
+	transition-timing-function: cubic-bezier(0.000, 1.000, 0.000, 1.000);
+	/* custom */
+}

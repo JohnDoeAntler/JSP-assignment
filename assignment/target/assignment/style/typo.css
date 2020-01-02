@@ -1,0 +1,25 @@
+@font-face {
+  font-family: "Jaapokki";
+  src: url(../font/font.woff);
+}
+
+@font-face {
+  font-family: "Jaapokki-regular";
+  src: url(../font/font2.woff);
+}
+
+.title-regular {
+	font-family: "Jaapokki-regular";
+	text-transform: uppercase;
+}
+
+.title {
+	font-family: "Jaapokki";
+	text-transform: uppercase;
+}
+
+.desc {
+	text-align: justify;
+	font-size: 0.8rem;
+	font-weight: 100;
+}

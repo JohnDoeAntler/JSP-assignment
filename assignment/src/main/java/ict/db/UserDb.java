@@ -214,4 +214,57 @@ public class UserDb extends Db {
 		}
 	}
 
+	//
+	// ─── CHANGE ROLE ────────────────────────────────────────────────────────────────
+	//
+	public User changeRole(String id, String from, String to) {
+		User user = null;
+
+		// select
+		try (Connection connection = getConnection()) {
+			try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM " + from + " WHERE id=?;")) {
+				preparedStatement.setString(1, id);
+				try (ResultSet result = preparedStatement.executeQuery()) {
+					if (result.next()) {
+						user = new User(
+							result.getString("id"),
+							result.getString("username"),
+							result.getString("password_digest"),
+							result.getBoolean("suspended"),
+							result.getTimestamp("created_at"),
+							result.getTimestamp("updated_at")
+						);
+					}
+				}
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		// remove
+		try (Connection connection = getConnection()) {
+			try (PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM " + from + " WHERE id=?;")) {
+				preparedStatement.setString(1, id);
+				preparedStatement.executeUpdate();
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+		// create
+		try (Connection connection = getConnection()) {
+			try (PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO " + to + " (`id`, `username`, `password_digest`, `suspended`) VALUES (?, ?, ?, ?);")) {
+				preparedStatement.setString(1, user.getId());
+				preparedStatement.setString(2, user.getUsername());
+				preparedStatement.setString(3, user.getPasswordDigest());
+				preparedStatement.setBoolean(4, user.getSuspended());
+				preparedStatement.executeUpdate();
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+		return user;
+	}
+
 }

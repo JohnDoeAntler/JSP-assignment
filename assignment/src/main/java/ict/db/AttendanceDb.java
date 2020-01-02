@@ -88,6 +88,32 @@ public class AttendanceDb extends Db {
 		return arr;
 	}
 
+	public ArrayList<Attendance> get(String field, Object value, String field2, Object value2) {
+		ArrayList<Attendance> arr = new ArrayList<>();
+
+		try (Connection connection = getConnection()) {
+			try (PreparedStatement preparedStatement = connection.prepareStatement(String.format("SELECT * FROM attendance WHERE %s=? AND %s=?;", field, field2))) {
+				preparedStatement.setObject(1, value);
+				preparedStatement.setObject(2, value2);
+				try (ResultSet result = preparedStatement.executeQuery()) {
+					while (result.next()) {
+						arr.add(
+							new Attendance(
+								result.getString("id"),
+								result.getString("student_id"),
+								result.getString("schedule_id"),
+								result.getTime("time")
+							)
+						);
+					}
+				}
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return arr;
+	}
+
 	public Attendance create(
 		String studentId,
 		String scheduleId,

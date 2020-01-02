@@ -23,7 +23,7 @@ public class ScheduleDb extends Db {
 		ArrayList<Schedule> arr = new ArrayList<>();
 
 		try (Connection connection = getConnection()) {
-			try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM schedule;")) {
+			try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM schedule ORDER BY date;")) {
 				try (ResultSet result = preparedStatement.executeQuery()) {
 					while (result.next()) {
 						arr.add(
@@ -72,11 +72,11 @@ public class ScheduleDb extends Db {
 		return null;
 	}
 
-	public ArrayList<Schedule> get(String field , String value) {
+	public ArrayList<Schedule> get(String field , Object value) {
 		ArrayList<Schedule> arr = new ArrayList<>();
 
 		try (Connection connection = getConnection()) {
-			try (PreparedStatement preparedStatement = connection.prepareStatement(String.format("SELECT * FROM schedule WHERE %s=?;", field))) {
+			try (PreparedStatement preparedStatement = connection.prepareStatement(String.format("SELECT * FROM schedule WHERE %s=? ORDER BY date;", field))) {
 				preparedStatement.setObject(1, value);
 				try (ResultSet result = preparedStatement.executeQuery()) {
 					while (result.next()) {
@@ -136,7 +136,7 @@ public class ScheduleDb extends Db {
 		String roomId
 	) {
 		try (Connection connection = getConnection()) {
-			try (PreparedStatement preparedStatement = connection.prepareStatement("UPDATE schedule SET course_id=?, date=?, from=?, to=?, room_id=? WHERE id=?;")) {
+			try (PreparedStatement preparedStatement = connection.prepareStatement("UPDATE schedule SET `course_id`=?, `date`=?, `from`=?, `to`=?, `room_id`=? WHERE `id`=?;")) {
 				preparedStatement.setString(1, courseId);
 				preparedStatement.setDate(2, date);
 				preparedStatement.setTime(3, from);
